@@ -17,10 +17,20 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(title: Text("Gustavo Application")),
         body: Container(
+          height: 400,
+          width: 400,
+          color: Colors.cyan,
+          child: Center(
+              child: Container(
+            height: 200,
+            width: 200,
+            color: Colors.white,
             child: Center(
-                child: GestureDetector(
-          child: Text("Contador: $contador", style: TextStyle(fontSize: 20.0)),
-        ))),
+                child: Container(
+              child: Text("Login"),
+            )),
+          )),
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => {
             setState(() {
