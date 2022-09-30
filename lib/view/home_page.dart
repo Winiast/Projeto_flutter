@@ -20,9 +20,15 @@ class HomePageState extends State<HomePage> {
           title: Text("Gustavo Application"),
           actions: [CustomSwitch()],
         ),
-        body: Center(
-          child: Text("Contador: $contador"),
-        ),
+        body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Center(
+                child: Column(
+              children: [Text("Login"), Text("Nome: "), Text("Senha: ")],
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+            ))),
         floatingActionButton: FloatingActionButton(
           onPressed: () => {
             setState(() {
