@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hello/controllers/App_controller.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -15,21 +16,34 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Gustavo Application")),
-        body: Container(
-            child: Switch(
-          value: App_controller.instance.darkTheme,
-          onChanged: ((value) {
-            App_controller.instance.changeTheme();
-          }),
-        )),
+        appBar: AppBar(
+          title: Text("Gustavo Application"),
+          actions: [CustomSwitch()],
+        ),
+        body: Center(
+          child: Text("Contador: $contador"),
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => {
             setState(() {
               contador++;
             })
           },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ));
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+      value: App_controller.instance.darkTheme,
+      onChanged: ((value) {
+        App_controller.instance.changeTheme();
+      }),
+    );
   }
 }
