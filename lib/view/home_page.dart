@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hello/controllers/App_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,30 +11,18 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int contador = 0;
-  String pharse = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            child: Center(
-          child: Container(
-            height: 300,
-            width: 300,
-            color: Colors.cyan,
-            child: Center(
-                child: Container(
-              height: 200,
-              width: 200,
-              color: Colors.white,
-              child: Center(
-                  child: Container(
-                child: Text("Login"),
-              )),
-            )),
-          ),
-        )),
         appBar: AppBar(title: Text("Gustavo Application")),
+        body: Container(
+            child: Switch(
+          value: App_controller.instance.darkTheme,
+          onChanged: ((value) {
+            App_controller.instance.changeTheme();
+          }),
+        )),
         floatingActionButton: FloatingActionButton(
           onPressed: () => {
             setState(() {
